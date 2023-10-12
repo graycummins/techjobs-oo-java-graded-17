@@ -9,7 +9,7 @@ public class Job {
 
     private String name;
     private Employer employer;
-    private String location;
+    private Location location;
     private PositionType positionType;
     private CoreCompetency coreCompetency;
 
@@ -24,19 +24,13 @@ public class Job {
         this();
         this.name = name;
         this.employer = employer;
-        this.location = String.valueOf(location);
+        this.location = location;
         this.positionType = positionType;
         this.coreCompetency = coreCompetency;
     }
     // TODO: Add custom equals and hashCode methods. Consider two Job objects "equal" when their id fields
     //  match.
-    @Override
-    public String toString() {
-        String name = (this.getName() == "") ? "Data not avaliable" : getName();
-        Boolean TorF = false;
 
-        return name;
-    }
     // TODO: Add getters for each field EXCEPT nextId. Add setters for each field EXCEPT nextID
     //  and id.
     public int getId() {
@@ -48,7 +42,7 @@ public class Job {
     public Employer getEmployer() {
         return employer;
     }
-    public String getLocation() {
+    public Location getLocation() {
         return location;
     }
 
@@ -71,7 +65,7 @@ public class Job {
         this.employer = employer;
     }
 
-    public void setLocation(String location) {
+    public void setLocation(Location location) {
         this.location = location;
     }
 
@@ -79,4 +73,32 @@ public class Job {
         this.positionType = positionType;
     }
 
+    @Override
+    public String toString() {
+        String empty = "";
+        this.name = (this.name == null || this.name == empty) ? "Data is not avaliable" : name;
+        if (this.employer.getValue() == null || this.employer.getValue() == "")
+        {
+            this.employer.setValue("Data not available");
+        }
+        if (this.location.getValue() == null || this.location.getValue() == "")
+        {
+            this.location.setValue("Data not available");
+        }
+        if (this.coreCompetency.getValue() == null || this.coreCompetency.getValue() == "")
+        {
+            this.coreCompetency.setValue("Data not available");
+        }
+        if(this.positionType.getValue() == null || this.positionType.getValue() == "")
+        {
+            this.positionType.setValue("Data not available");
+        }
+        String newline = System.getProperty("line.separator");
+        return "ID: " +this.id+ newline+
+                "Name: " + this.name + newline +
+                "Employer: " + this.employer + newline+
+                "Location: " +this.location + newline +
+                "Position Type: " + this.positionType + newline +
+                "Core Competency: " + this.coreCompetency+ newline;
+    }
 }
