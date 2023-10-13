@@ -75,8 +75,7 @@ public class Job {
 
     @Override
     public String toString() {
-        String empty = "";
-        this.name = (this.name == null || this.name == empty) ? "Data is not avaliable" : name;
+        this.name = (this.name == null || this.name == "") ? "Data is not avaliable" : name;
         if (this.employer.getValue() == null || this.employer.getValue() == "")
         {
             this.employer.setValue("Data not available");
@@ -93,12 +92,12 @@ public class Job {
         {
             this.positionType.setValue("Data not available");
         }
-        String newline = System.getProperty("line.separator");
-        return "ID: " +this.id+ newline+
-                "Name: " + this.name + newline +
-                "Employer: " + this.employer + newline+
-                "Location: " +this.location + newline +
-                "Position Type: " + this.positionType + newline +
-                "Core Competency: " + this.coreCompetency+ newline;
+        return System.lineSeparator() +
+                "ID: " +this.id+ System.lineSeparator()+
+                "Name: " + this.name + System.lineSeparator() +
+                "Employer: " + this.employer + System.lineSeparator()+
+                "Location: " +this.location + System.lineSeparator() +
+                "Position Type: " + this.positionType + System.lineSeparator() +
+                "Core Competency: " + this.coreCompetency + System.lineSeparator();
     }
 }
